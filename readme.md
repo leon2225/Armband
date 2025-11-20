@@ -2,7 +2,7 @@
 
 The **MyoMod Armband** is a modular, open-source **6-channel EMG (electromyography) armband** designed for real-time muscle signal acquisition of the forearm muscles near the ellbow and transmission of the measured signals via Bluetooth Low Energy (BLE). 
 
-[Video comes here]
+![](images/anim_cropped2.gif)
 
 It's general purpose approach enables flexible use in human-machine interfaces, robotics, prostetics and research applications. It is part of the modular **MyoMod architecture** and as such the firmware of the armband is easily customizeable. This also allows wired connections to external devices via MyoMod Link.
 
@@ -10,9 +10,13 @@ It's general purpose approach enables flexible use in human-machine interfaces, 
 
 ## 🧩 Architecture Overview
 
-The Data Processing Unit (DPU) is the brain of the Armband and orchestrates all data transmission. It is based on the 600 MHz NXP i.MX RT 1062 microcontroller and as such is able to perform all the needed digital signal processing in real time and still has a lot of computational capacity left for other tasks. Apart from the DPU the ESP32-S3 based BLE Bridge and the ADC are the most important components on the Armband. While the ADC captures the raw EMG signals that are to be filtered by the DPU, the BLE-Bridge implements a BLE Device and therefore is the interface to your Webapp, VR-game, etc. The BLE-Bridge is connected to the DPU via MyoMod-Link (a modular, real-time protocol based on I²C) and an async UART-based protocoll for configuration of the DPU (and for later Firmware Upgrades). In it's default configuration the Armband transmits the filtered as well as the raw EMG data to the BLE host, so that you can either work directly with the EMG data or implement your own filter algorithm on the host device.
+The Data Processing Unit (DPU) is the brain of the Armband and orchestrates all data transmission. It is based on the 600 MHz NXP i.MX RT 1062 microcontroller and as such is able to perform all the needed digital signal processing in real time and still has a lot of computational capacity left for other tasks. 
 
-![Architecture Diagram Placeholder](docs/architecture-diagram.png)
+Apart from the DPU the ESP32-S3 based BLE Bridge and the ADC are the most important components on the Armband. While the ADC captures the raw EMG signals that are to be filtered by the DPU, the BLE-Bridge implements a BLE Device and therefore is the interface to your Webapp, VR-game, etc. The BLE-Bridge is connected to the DPU via MyoMod-Link (a modular, real-time protocol based on I²C) and an async UART-based protocoll for configuration of the DPU (and for later Firmware Upgrades). 
+
+In it's default configuration the Armband transmits the filtered as well as the raw EMG data to the BLE host, so that you can either work directly with the EMG data or implement your own filter algorithm on the host device.
+
+![Architecture Diagram](images/architecture.drawio.png)
 
 Next to these key devices the Armband also includes
 * a 6 dof inertial measurement unit (IMU) that can further support the analysis of the measured EMG signals
