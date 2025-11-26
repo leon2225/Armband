@@ -26,67 +26,6 @@ Next to these key devices the Armband also includes
 
 ---
 
-## 🧠 (Web)BLE API
-
-The MyoMod Armband communicates with host devices via **Bluetooth Low Energy (BLE)** using a custom GATT service. The API provides real-time access to EMG data and device configuration.
-
-### BLE Service & Characteristics
-
-**Primary Service UUID:** `f1f1d764-f9dc-4274-9f59-325fea6d631b`
-
-| Characteristic | UUID | Type | Description |
-|---------------|------|------|-------------|
-| **Raw EMG** | `9c54ed76-847e-4d51-84be-7cf02794de53` | Notify | Raw 6-channel EMG signals (15 samples/channel) |
-| **Filtered EMG** | `36845417-f01b-4167-afa1-81b322238fe1` | Notify | Processed EMG data (6 channels + state) |
-| **Combined EMG** | `ab92c948-16ed-4ed2-b18e-d4c0a27808fc` | Notify | Raw + filtered EMG in single packet |
-| **DPU Control** | `5f2d5b5b-2166-4d71-9b4a-ea719ce9777e` | Write/Notify | Device configuration and control protocol |
-
-### Data Structures
-
-
-**EMG Data** (15 samples per channel):
-```typescript
-type MyoModEmgData = {
-  chnA: Float32Array;  // Channel A samples
-  chnB: Float32Array;  // Channel B samples  
-  chnC: Float32Array;  // Channel C samples
-  chnD: Float32Array;  // Channel D samples
-  chnE: Float32Array;  // Channel E samples
-  chnF: Float32Array;  // Channel F samples
-};
-```
-
-**Filtered EMG Data**:
-```typescript
-type MyoModFilteredEmgData = {
-  data: Float32Array;  // 6 processed channel values
-  state: number;       // Processing state indicator
-};
-```
-
-**Combined EMG Data**:
-```typescript
-type MyoModCombinedEmgData = {
-  raw: MyoModEmgData;           // Raw EMG data (6 channels × 15 samples)
-  filtered: MyoModFilteredEmgData;  // Filtered EMG data (6 channels + state)
-};
-```
-
-**DPU Control Protocol**:
-
-The async DPU control protocol is text based and is documented here: [MyoMod WebApp repository](#).
-
-### WebBLE Implementation
-
-A comprehensive React SDK is available with full API documentation, including connection management, data subscription, device configuration, and error handling. See the [MyoMod WebApp repository](#) for complete implementation details and examples.
-
-**Browser Support**: Chrome/Edge 56+, Safari 16.4+. Requires HTTPS for WebBLE access.
-
-### Unreal Engine Implementation
-There is an exsiting implementation for real time transmission of the EMG data via BLE for the android plttform in unreal engine. ATM we are discussing if it can be open-sourced due to the usage of a plugin used for BLE interaction.
-
----
-
 ## ⚙️ Hardware Overview
 
 
@@ -162,6 +101,69 @@ The MyoMod Armband employs **digital** signal processing to overcome the limitat
 The adaptive EMG filter is able to automatically adapt to interference by analysing the signal in the freqency domain. For this a 512-point FFT with an update rate of 100 Hz is used. This approach also allows for a consistent 0-1 output scaling across environments, is robust against many electronic device emissions (like monitors or microwaves) and also automatically handles 50/60Hz power line interference. Last but no least focusing on digital filtering allows for an easi replacement or refinement of this filter.
 
 ---
+
+
+## 🧠 (Web)BLE API
+
+The MyoMod Armband communicates with host devices via **Bluetooth Low Energy (BLE)** using a custom GATT service. The API provides real-time access to EMG data and device configuration.
+
+### BLE Service & Characteristics
+
+**Primary Service UUID:** `f1f1d764-f9dc-4274-9f59-325fea6d631b`
+
+| Characteristic | UUID | Type | Description |
+|---------------|------|------|-------------|
+| **Raw EMG** | `9c54ed76-847e-4d51-84be-7cf02794de53` | Notify | Raw 6-channel EMG signals (15 samples/channel) |
+| **Filtered EMG** | `36845417-f01b-4167-afa1-81b322238fe1` | Notify | Processed EMG data (6 channels + state) |
+| **Combined EMG** | `ab92c948-16ed-4ed2-b18e-d4c0a27808fc` | Notify | Raw + filtered EMG in single packet |
+| **DPU Control** | `5f2d5b5b-2166-4d71-9b4a-ea719ce9777e` | Write/Notify | Device configuration and control protocol |
+
+### Data Structures
+
+
+**EMG Data** (15 samples per channel):
+```typescript
+type MyoModEmgData = {
+  chnA: Float32Array;  // Channel A samples
+  chnB: Float32Array;  // Channel B samples  
+  chnC: Float32Array;  // Channel C samples
+  chnD: Float32Array;  // Channel D samples
+  chnE: Float32Array;  // Channel E samples
+  chnF: Float32Array;  // Channel F samples
+};
+```
+
+**Filtered EMG Data**:
+```typescript
+type MyoModFilteredEmgData = {
+  data: Float32Array;  // 6 processed channel values
+  state: number;       // Processing state indicator
+};
+```
+
+**Combined EMG Data**:
+```typescript
+type MyoModCombinedEmgData = {
+  raw: MyoModEmgData;           // Raw EMG data (6 channels × 15 samples)
+  filtered: MyoModFilteredEmgData;  // Filtered EMG data (6 channels + state)
+};
+```
+
+**DPU Control Protocol**:
+
+The async DPU control protocol is text based and is documented here: [MyoMod WebApp repository](#).
+
+### WebBLE Implementation
+
+A comprehensive React SDK is available with full API documentation, including connection management, data subscription, device configuration, and error handling. See the [MyoMod WebApp repository](#) for complete implementation details and examples.
+
+**Browser Support**: Chrome/Edge 56+, Safari 16.4+. Requires HTTPS for WebBLE access.
+
+### Unreal Engine Implementation
+There is an exsiting implementation for real time transmission of the EMG data via BLE for the android plttform in unreal engine. ATM we are discussing if it can be open-sourced due to the usage of a plugin used for BLE interaction.
+
+---
+
 
 ## 🔗 Related Repositories
 
