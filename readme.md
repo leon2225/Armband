@@ -90,11 +90,18 @@ There is an exsiting implementation for real time transmission of the EMG data v
 ## ⚙️ Hardware Overview
 
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+The MyoMod Armband consists of several different components. The most important component of course is the **mainboard**, that houses all the electronic components like the DPU, it's external Flash and RAM but also the ADC. To meet all the requirements of these different areas (like **high-speed interconnection** between DPU and RAM but also dealing with **fragile EMG signals with only a few µV**) a lot of effort went into designing it with **mixed-signal design** approches in mind while also keeping the costs low by using only a 4 layer pcb. 
 
-![Hardware Diagram Placeholder](docs/architecture-diagram.png)
+![Mainboard pcb](images/pcb.jpg)
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+The actual **electrodes** are made with **flex-pcbs**, that are directly connected to the mainboard. This reduces the bill of materials, eases the assembly and is easier to scale than using cables etc. for interconnection. This advantage is leveraged by using **shielded** flex-pcbs as shielded cables increase the costs significantly.
+
+![Flex pcb](images/flexpcb.png)
+
+But of course the MyoMod Armband wouldn't be an actual armband without the **textiles** and the several **housings**. The primary challenge for this lies in the **strechtablity** of the armband, as it must fit for a range of different forearm circumferences. To allow this we use a strechable softshell fabric and wind up the flex-pcb. 
+
+![Armband](images/armband_cropped.jpg)
+![Armband Electrodes](images/armband_electrodes_cropped.jpg)
 
 ---
 
