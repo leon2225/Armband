@@ -89,6 +89,7 @@ There is an exsiting implementation for real time transmission of the EMG data v
 
 ## ⚙️ Hardware Overview
 
+
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
 
 ![Hardware Diagram Placeholder](docs/architecture-diagram.png)
@@ -148,7 +149,7 @@ MyoMod-Link is a **modular, real-time protocol based on I²C** that provides:
 
 The MyoMod Armband employs **digital** signal processing to overcome the limitations and costs of traditional analog EMG filtering systems. It does so by using a high resolution, low-noise Sigma-Delta ADC (MAX11254). The usage of a Sigma-Delta ADC greatly reduces the requeirements of the input anti-aliasing filters, as the digitzing frequency is severeal magnitudes higher than the actual sampling rate of the 24 Bit signal. This allows us to move the actual filtering to the digital domain and thus remove the high costs of precision analog filters otherwise needed for this weak EMG signals. 
 
-![Digital Processing Flowchart](docs/digital-processing-diagram.png)
+![Digital Processing Flowchart](images/bewertungVar/BewertungVariableStoerung_eng.svg)
 
 **Adaptive Processing:**
 The adaptive EMG filter is able to automatically adapt to interference by analysing the signal in the freqency domain. For this a 512-point FFT with an update rate of 100 Hz is used. This approach also allows for a consistent 0-1 output scaling across environments, is robust against many electronic device emissions (like monitors or microwaves) and also automatically handles 50/60Hz power line interference. Last but no least focusing on digital filtering allows for an easi replacement or refinement of this filter.
