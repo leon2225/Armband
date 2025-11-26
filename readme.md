@@ -170,17 +170,8 @@ There is an exsiting implementation for real time transmission of the EMG data v
 | Component | Description | Repository |
 |------------|--------------|-------------|
 | **MyoMod-Armband-Hardware** | CAD, PCB, and design files for the EMG armband | [Repository link placeholder](#) |
-| **MyoMod-Armband-Firmware** | Firmware for EMG acquisition, BLE communication, and preprocessing | [Repository link placeholder](#) |
-| **MyoMod-Documentation** | Detailed documentation, setup instructions, and datasheets | [Repository link placeholder](#) |
-| **MyoMod-Protocol** | Definition of BLE services and data packet formats | [Repository link placeholder](#) |
-| **MyoMod-WebApp** | Web interface for real-time EMG visualization and calibration | [Repository link placeholder](#) |
-| **MyoMod-Link** | Modular converter for UART, SPI, I²C, and other communication interfaces | [Repository link placeholder](#) |
-
----
-
-## 🚀 Getting Started
-
-### Cloning the repository
-```bash
-git clone https://github.com/MyoMod/MyoMod-Armband.git
-cd MyoMod-Armband
+| **MyoMod-Armband-DPU** | Firmware for DPU, including EMG acquisition, modular RT scheduler, and preprocessing | [Repository link](https://github.com/MyoMod/MyoMod-Armband-DPU) |
+| **MyoMod-Armband-BLE-Bridge** | Firmware for BLE-Bridge (ESP32-S3 based) | [Repository link](https://github.com/MyoMod/MyoMod-BleBridge) |
+| **MyoMod-Protocol** | Definition of BLE services and data packet formats | [Repository link](https://github.com/MyoMod/DPU-Control-Protocol) |
+| **MyoMod-WebApp** | Web interface for real-time EMG visualization and calibration | [Repository link](https://github.com/MyoMod/js-sdk/) |
+| **MyoMod-BaseDevice** | Sample MyoMod Device (RP2030 based) | [Repository link](https://github.com/MyoMod/BaseDevice) |
